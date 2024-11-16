@@ -42,7 +42,7 @@ export default function DeepfakeDetector() {
       const response = await fetch('https://api-inference.huggingface.co/models/Wvolf/ViT_Deepfake_Detection', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer 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',
+          'Authorization': `Bearer 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`,
           'Content-Type': 'application/json',
         },
         body: new Uint8Array(imageBuffer),
@@ -152,10 +152,10 @@ export default function DeepfakeDetector() {
               onClick={handleAnalyze}
               disabled={!selectedImage || loading}
               className={`
-                w-full py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 transform
+                w-full py-3 px-4 rounded-lg font-medium transition-all duration-300  transform
                 ${loading || !selectedImage 
                   ? 'bg-[#D5FE52]/50 text-black cursor-not-allowed'
-                  : 'bg-[#D5FE52] text-black hover:bg-[#D5FE52]/90'}`}
+                  : 'bg-[#D5FE52] text-black  hover:bg-[#D5FE52]/90 '}`}
             >
               {loading ? (
                 <div className="flex items-center justify-center">

@@ -42,7 +42,7 @@ export default function LandingPage() {
         {/* Launch App Button */}
         <Link 
           href="detect" 
-          className="px-4 sm:px-7 py-1.5 sm:py-2 bg-[#D5FE52] text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-colors duration-300 hover:scale-105 transform"
+          className="px-4 sm:px-7 py-1.5 sm:py-2 bg-[#D5FE52] text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-colors duration-300"
         >
           Launch App
         </Link>
@@ -82,7 +82,7 @@ export default function LandingPage() {
           >
             <Link 
               href="/detect" 
-              className="px-8 py-3 bg-[#D5FE52] text-black text-lg font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-all duration-300 hover:scale-105 transform"
+              className="px-8 py-3 bg-[#D5FE52] text-black text-lg font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-all duration-300 "
             >
               Try It Now
             </Link>
