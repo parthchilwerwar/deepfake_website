@@ -42,7 +42,7 @@ export default function DeepfakeDetector() {
       const response = await fetch('https://api-inference.huggingface.co/models/Wvolf/ViT_Deepfake_Detection', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer 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`,
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_MODEL_API}`,
           'Content-Type': 'application/json',
         },
         body: new Uint8Array(imageBuffer),
