@@ -1,12 +1,45 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, forwardRef, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Shield, AlertTriangle, Check, Upload, MessageSquare, Share2 } from 'lucide-react'
 import Link from 'next/link'
+import { AnimatedBeam } from "@/components/ui/animated-beam"
+import { cn } from "@/lib/utils"
+import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
+
+
+const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(
+  ({ className, children }, ref) => {
+    return (
+      <div ref={ref} className={cn("z-10 flex size-12 items-center justify-center rounded-full border-2 border-[#D5FE52] bg-black p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]", className)}>
+        {children}
+      </div>
+    )
+  }
+)
+Circle.displayName = "Circle"
+
+const Icons = {
+  user: () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D5FE52" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  ),
+  model: () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D5FE52" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="M7 7h10M7 12h10M7 17h10" />
+    </svg>
+  ),
+}
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const div1Ref = useRef<HTMLDivElement>(null)
+  const div2Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +54,7 @@ export default function LandingPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.8, ease: "easeOut" }, 
     },
   }
 
@@ -30,13 +63,13 @@ export default function LandingPage() {
       {/* Enhanced Header */}
       <motion.header 
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 transition-all duration-300 ${
-          scrolled ? 'bg-black/80 backdrop-blur-lg' : 'bg-transparent'
-        } border-b border-[#D5FE52]/20`}
+          scrolled ? ' backdrop-blur-md' : 'bg-transparent'
+  } border-b border-[#D5FE52]/20`}
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <Shield className="text-[#D5FE52]" size={36} />
-          <span className="text-2xl font-bold tracking-tight">DeepDetect AI</span>
+
+          <span className="text-2xl font-bold font-sans tracking-tight">🔍 TruthLens </span>
         </Link>
 
         {/* Launch App Button */}
@@ -62,7 +95,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            The Growing Threat of Deepfakes
+            Unmasking the World of  <span className='text-white'>Deepfakes</span>
           </motion.h1>
           
           <motion.p 
@@ -71,7 +104,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Protect yourself against digital deception with our advanced AI-powered detection system.
+            Guard yourself from digital deception with Deepfake detection website.
           </motion.p>
 
           <motion.div
@@ -121,8 +154,8 @@ export default function LandingPage() {
               <div className="flex items-start gap-4">
                 <AlertTriangle className="text-[#D5FE52] mt-1" size={24} />
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Digital Manipulation Crisis</h3>
-                  <p className="text-gray-300">73% increase in deepfake incidents affecting individuals and organizations worldwide.</p>
+                  <h3 className="text-xl font-semibold mb-2">A Rising Crisis in Digital Manipulation</h3>
+                  <p className="text-gray-300">73% increase in deepfake incidents impacting individuals and organizations globally.</p>
                 </div>
               </div>
               {/* Add more problem statements */}
@@ -135,7 +168,7 @@ export default function LandingPage() {
               className="bg-[#D5FE52]/10 p-6 rounded-xl border border-[#D5FE52]/30"
             >
               <h3 className="text-2xl font-bold text-[#D5FE52] mb-4">Our Solution</h3>
-              <p className="text-gray-300">Advanced AI-powered detection system with 99.7% accuracy in identifying manipulated content.</p>
+              <p className="text-gray-300">A  website which  identifies manipulated content, helping you protect the truth.</p>
             </motion.div>
           </div>
         </div>
@@ -181,7 +214,7 @@ export default function LandingPage() {
       <section className="py-20 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
-            className="text-4xl font-bold text-center mb-16 text-[#D5FE52]"
+            className="text-4xl font-bold text-center mb-16 text-[#D5FE52] "
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -197,7 +230,7 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="p-6 bg-gradient-to-br from-black to-[#D5FE52]/5 rounded-xl border border-[#D5FE52]/30"
+                className="p-6 bg-gradient-to-br from-black to-[#D5FE52]/5 rounded-xl border border-[#D5FE52]/30 hover:border-[#D5FE52]/60 group"
               >
                 <h3 className="text-xl font-bold mb-4 text-[#D5FE52]">{useCase.title}</h3>
                 <p className="text-gray-300 mb-4">{useCase.description}</p>
@@ -211,14 +244,87 @@ export default function LandingPage() {
         </div>
       </section>
 
-       {/* Simplified Footer */}
-       <footer className="bg-black py-8 px-4 border-t border-[#D5FE52]/20">
+      {/* Use Cases Section */}
+      <section className="py-20 px-10 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            className="text-6xl font-bold text-center mb-1 text-[#D5FE52]"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          > 
+            Observe the Implementation
+          </motion.h2>
+          <motion.h4 
+            className="text-2xl font-bold text-center mb-8 text-white"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            Interaction Between Users and the Model API
+          </motion.h4>
+
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <div
+              className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg border border-[#D5FE52]/30 bg-black p-10 md:shadow-xl"
+              ref={containerRef}
+            >
+              <div className="flex size-full flex-col items-stretch justify-between gap-10">
+                <div className="flex flex-row justify-between">
+                  <Circle ref={div1Ref}>
+                    <Icons.user />
+                  </Circle>
+                  <Circle ref={div2Ref}>
+                    <Icons.model />
+                  </Circle>
+                </div>
+              </div>
+
+              <AnimatedBeam
+                
+                containerRef={containerRef}
+                fromRef={div1Ref}
+                toRef={div2Ref}
+                startYOffset={10}
+                endYOffset={10}
+                pathColor="#D5FE52"
+                gradientStartColor="white"
+                gradientStopColor="white"
+                curvature={-30}
+              />
+              <AnimatedBeam
+              containerRef={containerRef}
+              fromRef={div1Ref}
+              toRef={div2Ref}
+              startYOffset={-9}
+              endYOffset={-9}
+              pathColor="#D5FE52"
+              gradientStartColor="white"
+              gradientStopColor="white"
+              curvature={30}
+              reverse
+              />
+
+
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      
+
+      {/* Simplified Footer */}
+      <footer className="bg-black py-8 px-4 border-t border-[#D5FE52]/20 mt-10">
         <div className="max-w-6xl mx-auto text-center text-gray-400">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Shield className="text-[#D5FE52]" size={24} />
-            <span className="text-xl font-bold text-white">DeepDetect AI</span>
+            <span className="text-xl font-bold text-white">🔍 TruthLens</span>
           </div>
-          <p>© 2024 DeepDetect AI. All rights reserved.</p>
+          <p>© 2024  TruthLens.</p>
         </div>
       </footer>
     </div>
@@ -246,49 +352,23 @@ const steps = [
 const useCases = [
   {
     title: "Media Authentication",
-    description: "News organizations use our tool to verify the authenticity of submitted content before publication.",
-    outcome: "Prevented 2,000+ manipulated media items from circulation"
+    description: "News organizations will use our website to check if submitted content is real before publishing it.",
+    outcome: "We'll stop over  fake media posts from spreading over the internet."
   },
   {
     title: "Identity Protection",
-    description: "Individuals verify social media content to protect against identity theft and impersonation.",
-    outcome: "98% success rate in identifying synthetic profiles"
+    description: "People will use our website to verify social media content and protect themselves from identity theft and fake accounts.",
+    outcome: "We'll correctly identify  fake profiles as well ."
   },
   {
     title: "Corporate Security",
-    description: "Companies validate external communications to prevent deepfake-based fraud.",
-    outcome: "Reduced fraudulent attempts by 85%"
+    description: "Companies will use our website to check if emails  images are real or deepfaked.",
+    outcome: "We'll reduce fraudulent attempts"
   },
   {
     title: "Legal Evidence",
-    description: "Law firms verify digital evidence before submission in legal proceedings.",
-    outcome: "Supported 500+ cases with verified digital evidence"
+    description: "Lawyers will use our website to verify digital evidence before using it in court cases.",
+    outcome: "We'll help countless cases by verifying digital evidence."
   }
 ]
 
-const footerSections = [
-  {
-    title: "Product",
-    links: [
-      { text: "Features", href: "#" },
-      { text: "Pricing", href: "#" },
-      { text: "API", href: "#" }
-    ]
-  },
-  {
-    title: "Resources",
-    links: [
-      { text: "Documentation", href: "#" },
-      { text: "Blog", href: "#" },
-      { text: "Research", href: "#" }
-    ]
-  },
-  {
-    title: "Company",
-    links: [
-      { text: "About", href: "#" },
-      { text: "Contact", href: "#" },
-      { text: "Privacy Policy", href: "#" }
-    ]
-  }
-]

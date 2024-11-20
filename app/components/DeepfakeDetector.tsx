@@ -2,6 +2,8 @@
 
 import { useState, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link'
+import { MdKeyboardBackspace } from "react-icons/md";
 
 export default function DeepfakeDetector() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -39,7 +41,7 @@ export default function DeepfakeDetector() {
       
       const imageBuffer = await selectedImage.arrayBuffer();
 
-      const response = await fetch('https://api-inference.huggingface.co/models/Wvolf/ViT_Deepfake_Detection', {
+      const response = await fetch('https://api-inference.huggingface.co/models/Hemg/Deepfake-Detection', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${process.env.NEXT_PUBLIC_MODEL_API}`,
@@ -100,13 +102,14 @@ export default function DeepfakeDetector() {
   }, []);
 
   return (
+    
     <div className="min-h-screen bg-black text-white p-6">
       <div className="max-w-4xl mx-auto">
         <div className="bg-black/95 backdrop-blur-lg rounded-xl shadow-lg p-8 border border-[#D5FE52]/30">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-[#D5FE52]">Deepfake Detection</h2>
+            <h2 className="text-3xl font-bold text-[#D5FE52]">🔍 TruthLens</h2>
             <p className="text-gray-300 mt-2">
-              Upload an image to check if it's real or artificially generated.
+              Upload an image to check if it's real and fake as based on confidence.
             </p>
           </div>
 
@@ -189,7 +192,7 @@ export default function DeepfakeDetector() {
                   
                   <div className="bg-black/90 p-4 rounded border border-[#D5FE52]/20">
                     <div className="overflow-x-auto">
-                      <pre className="text-sm whitespace-pre-wrap break-words text-white ">
+                      <pre className="text-sm whitespace-pre-wrap break-words text-white  ">
                         {JSON.stringify(result, null, 2)}
                       </pre>
                     </div>
@@ -199,7 +202,17 @@ export default function DeepfakeDetector() {
             )}
           </div>
         </div>
-      </div>
+        <Link
+        href="/"
+        >
+         <button 
+          className='w-full py-3 px-4 rounded-lg font-medium mt-10 bg-[#D5FE52] text-black transition-transform duration-0.4 hover:bg-[#b3d543]'>
+          Back 
+         </button>
+      </Link>
+    </div>
+    
+      
     </div>
   );
 }
