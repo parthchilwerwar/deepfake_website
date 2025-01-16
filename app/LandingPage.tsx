@@ -4,10 +4,10 @@ import { useState, useEffect, forwardRef, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, Shield, AlertTriangle, Check, Upload, MessageSquare, Share2 } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { AnimatedBeam } from "@/components/ui/animated-beam"
 import { cn } from "@/lib/utils"
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
-
 
 const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(
   ({ className, children }, ref) => {
@@ -49,40 +49,37 @@ export default function LandingPage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }, 
-    },
-  }
-
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Enhanced Header */}
+      {/* Header */}
       <motion.header 
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 transition-all duration-300 ${
-          scrolled ? ' backdrop-blur-md' : 'bg-transparent'
-  } border-b border-[#D5FE52]/20`}
+          scrolled ? 'backdrop-blur-md' : 'bg-transparent'
+        } border-b border-[#D5FE52]/20`}
       >
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-
-          <span className="text-2xl font-bold font-sans tracking-tight">🔍 TruthLens </span>
+          <span className="text-2xl font-bold font-sans tracking-tight">🔍 TruthLens</span>
         </Link>
 
-        {/* Launch App Button */}
-        <Link 
-          href="detect" 
-          className="px-4 sm:px-7 py-1.5 sm:py-2 bg-[#D5FE52] text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-colors duration-300"
-        >
-          Launch App
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link 
+            href="/blog" 
+            className="px-4 sm:px-7 py-1.5 sm:py-2 border border-[#D5FE52] text-[#D5FE52] text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/10 transition-colors duration-300"
+          >
+            Blog
+          </Link>
+          <Link 
+            href="detect" 
+            className="px-4 sm:px-7 py-1.5 sm:py-2 bg-[#D5FE52] text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-colors duration-300"
+          >
+            Launch App
+          </Link>
+        </div>
       </motion.header>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 bg-black">
+      
+       {/* Hero Section */}
+       <section className="relative min-h-screen flex flex-col items-center justify-center px-4 bg-black">
         <motion.div 
           className="text-center max-w-5xl mx-auto pt-20"
           initial={{ opacity: 0, y: 20 }}
@@ -316,15 +313,69 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
-      
 
-      {/* Simplified Footer */}
+      {/* New Blog Preview Section */}
+      <section className="py-20 px-4 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-4xl font-bold text-center mb-16 text-[#D5FE52]"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            Latest from Our Blog
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {latestPosts.map((post, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-black/95 rounded-xl border border-[#D5FE52]/30 overflow-hidden hover:border-[#D5FE52]/60 transition-all"
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={post.imageUrl}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-[#D5FE52]">{post.title}</h3>
+                  <p className="text-gray-300 mb-4 line-clamp-2">{post.excerpt}</p>
+                  <Link 
+                    href={`/blog/${post.id}`}
+                    className="text-[#D5FE52] hover:text-[#D5FE52]/80 transition-colors inline-flex items-center gap-2"
+                  >
+                    Read More <ChevronRight size={16} />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link 
+              href="/blog"
+              className="px-8 py-3 border border-[#D5FE52] text-[#D5FE52] text-lg font-semibold rounded-lg hover:bg-[#D5FE52]/10 transition-all duration-300 inline-block"
+            >
+              View All Posts
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="bg-black py-8 px-4 border-t border-[#D5FE52]/20 mt-10">
         <div className="max-w-6xl mx-auto text-center text-gray-400">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-xl font-bold text-white">🔍 TruthLens</span>
           </div>
-          <p>© 2024  TruthLens.</p>
+          <p>© 2024 TruthLens.</p>
         </div>
       </footer>
     </div>
@@ -353,16 +404,16 @@ const useCases = [
   {
     title: "Media Authentication",
     description: "News organizations will use our website to check if submitted content is real before publishing it.",
-    outcome: "We'll stop over  fake media posts from spreading over the internet."
+    outcome: "We'll stop over fake media posts from spreading over the internet."
   },
   {
     title: "Identity Protection",
     description: "People will use our website to verify social media content and protect themselves from identity theft and fake accounts.",
-    outcome: "We'll correctly identify  fake profiles as well ."
+    outcome: "We'll correctly identify fake profiles as well."
   },
   {
     title: "Corporate Security",
-    description: "Companies will use our website to check if emails  images are real or deepfaked.",
+    description: "Companies will use our website to check if emails images are real or deepfaked.",
     outcome: "We'll reduce fraudulent attempts"
   },
   {
@@ -372,3 +423,23 @@ const useCases = [
   }
 ]
 
+const latestPosts = [
+  {
+    id: 1,
+    title: "The Rise of Deepfake Technology",
+    excerpt: "Understanding the evolution and impact of deepfake technology in today's digital landscape.",
+    imageUrl: "/images/blog/rise_2.jpg",
+  },
+  {
+    id: 2,
+    title: "How to Spot a Deepfake",
+    excerpt: "Expert tips and techniques for identifying manipulated media content.",
+    imageUrl: "/images/blog/rise_3.jpg",
+  },
+  {
+    id: 3,
+    title: "Protecting Your Digital Identity",
+    excerpt: "Essential strategies to safeguard yourself against deepfake-based identity theft.",
+    imageUrl: "/images/blog/rise_11.jpg",
+  }
+]
