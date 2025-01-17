@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DeepFake Detection Platform
 
-## Getting Started
+A modern web application built with Next.js that helps users detect AI-generated content and deepfakes.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Real-time Detection**: Advanced AI-powered detection of manipulated images and videos
+- **User-friendly Interface**: Clean and intuitive design for seamless user experience
+- **Blog Section**: Educational resources about deepfake technology and digital security
+- **Responsive Design**: Fully optimized for all devices and screen sizes
+- **Performance Optimized**: Built with Next.js for optimal loading speeds and SEO
+
+## 🛠️ Tech Stack
+
+- [Next.js 14](https://nextjs.org/) - React framework for production
+- [TypeScript](https://www.typescriptlang.org/) - For type-safe code
+- [Tailwind CSS](https://tailwindcss.com/) - For styling
+- [Framer Motion](https://www.framer.com/motion/) - For smooth animations
+- [Vercel](https://vercel.com/) - For deployment and hosting
+
+## 🚦 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/parthchilwerwar/deepfake_website
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. **Open [http://localhost:3000](http://localhost:3000)** with your browser to see the result.
+
+## 📁 Project Structure
+
+```
+├── app/
+│   ├── blog/
+│   ├── detect/
+│   └── page.tsx
+├── components/
+├── public/
+│   └── blog/
+└── styles/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuration
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load custom fonts.
 
-## Learn More
+## 📚 Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Learn about Tailwind CSS
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/) - Learn about TypeScript
+- [Framer Motion Documentation](https://www.framer.com/motion/) - Learn about Framer Motion
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Deployment
 
-## Deploy on Vercel
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/parthchilwerwar/deepfake_website/issue).
+
+## 📝 License
+
+This project is [MIT](LICENSE) licensed.
+
+## 👥 Authors
+
+- Your Name - [GitHub Profile](https://github.com/parthchilwerwar)
+
+---
+
+<p align="center">Made By 🔍 TruthLens</p>
