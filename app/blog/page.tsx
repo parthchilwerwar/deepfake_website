@@ -24,16 +24,16 @@ export default function BlogPage() {
       title: "Understanding Deepfake Detection Technology",
       excerpt: "Learn about the latest advances in deepfake detection and how AI is helping combat digital manipulation.",
       content: "Full article content here...",
-      author: "John Doe",
+      author: "Arya",
       date: "January 15, 2025",
       imageUrl: "/images/blog/rise_2.jpg",
       readTime: "5 min read"
     },
     {
       id: 2,
-      title: "The Rise of AI-Generated Content",
-      excerpt: "Exploring the challenges and opportunities of AI-generated media in today's digital landscape.",
-      author: "Jane Smith",
+      title: "How to spot a Deepfake",
+      excerpt: "Learn simple techniques to identify deepfake media and protect yourself from digital manipulation.",
+      author: "Atharva ",
       date: "January 14, 2025",
       imageUrl: "/images/blog/rise_3.jpg",
       readTime: "4 min read"
@@ -42,7 +42,7 @@ export default function BlogPage() {
       id: 3,
       title: "How to Protect Your Digital Identity",
       excerpt: "Essential strategies and best practices for safeguarding your online presence from deepfake threats.",
-      author: "Alex Johnson",
+      author: "Kaushal",
       date: "January 13, 2025",
       imageUrl: "/images/blog/rise_11.jpg",
       readTime: "6 min read"
@@ -67,11 +67,11 @@ export default function BlogPage() {
         </Link>
 
         <div className="flex items-center gap-4">
-          <Link 
-            href="/blog" 
+        <Link 
+            href="/" 
             className="px-4 sm:px-7 py-1.5 sm:py-2 border border-[#D5FE52] text-[#D5FE52] text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/10 transition-colors duration-300"
           >
-            Blog
+            Home
           </Link>
           <Link 
             href="/detect"
@@ -91,7 +91,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-          TruthLens Blog
+          TruthLens Blog's 
           </motion.h1>
           <motion.p 
             className="text-xl text-gray-300"
@@ -134,9 +134,12 @@ export default function BlogPage() {
                   <p className="text-gray-300 mb-4 line-clamp-2">{post.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-400">By {post.author}</span>
-                    <button className="text-[#D5FE52] inline-flex items-center gap-1 group-hover:text-[#D5FE52]/80 transition-colors">
+                    <Link 
+                      href={`/blog/${post.id}`} 
+                      className="text-[#D5FE52] inline-flex items-center gap-1 group-hover:text-[#D5FE52]/80 transition-colors"
+                    >
                       Read more <ChevronRight size={16} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.article>
