@@ -31,7 +31,7 @@ export default function BlogPage() {
     },
     {
       id: 2,
-      title: "How to spot a Deepfake",
+      title: "How to spot a Deepfake Image",
       excerpt: "Learn simple techniques to identify deepfake media and protect yourself from digital manipulation.",
       author: "Atharva ",
       date: "January 14, 2025",
