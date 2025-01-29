@@ -62,12 +62,12 @@ export default function LandingPage() {
         </Link>
 
         <div className="flex items-center gap-4">
-          <Link 
+          {/* <Link 
             href="/blog" 
             className="px-4 sm:px-7 py-1.5 sm:py-2 border border-[#D5FE52] text-[#D5FE52] text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/10 transition-colors duration-300"
           >
             Blog
-          </Link>
+          </Link> */}
           <Link 
             href="detect" 
             className="px-4 sm:px-7 py-1.5 sm:py-2 bg-[#D5FE52] text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-colors duration-300"

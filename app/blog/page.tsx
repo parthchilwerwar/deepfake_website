@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
+
 
 export default function BlogPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -67,12 +69,13 @@ export default function BlogPage() {
         </Link>
 
         <div className="flex items-center gap-4">
-        <Link 
+        {/* <Link 
             href="/" 
             className="px-4 sm:px-7 py-1.5 sm:py-2 border border-[#D5FE52] text-[#D5FE52] text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/10 transition-colors duration-300"
           >
             Home
-          </Link>
+          </Link> */}
+        
           <Link 
             href="/detect"
             className="px-4 sm:px-7 py-1.5 sm:py-2 bg-[#D5FE52] text-black text-sm sm:text-base font-semibold rounded-lg hover:bg-[#D5FE52]/90 transition-colors duration-300"
@@ -82,10 +85,18 @@ export default function BlogPage() {
         </div>
       </motion.header>
 
+      
+
       {/* Add padding-top to account for fixed header */}
       <div className="pt-20">
         {/* Blog Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <Link 
+                href="/" 
+                className="inline-flex items-center gap-2 text-[#D5FE52] hover:text-[#D5FE52]/80 mb-8"
+              >
+                <ChevronLeft  /> Home
+              </Link>
           <motion.h1 
             className="text-5xl font-bold text-[#D5FE52] mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -102,6 +113,7 @@ export default function BlogPage() {
             Stay informed about deepfake detection and digital authenticity
           </motion.p>
         </div>
+        
 
         {/* Blog Posts Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -146,6 +158,7 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
+        
 
         {/* Footer */}
         <footer className="bg-black py-8 px-4 border-t border-[#D5FE52]/20">
