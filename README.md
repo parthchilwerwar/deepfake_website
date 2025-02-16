@@ -89,7 +89,7 @@ This project is [MIT](LICENSE) licensed.
 
 ## 👥 Authors
 
-- Your Name - [GitHub Profile](https://github.com/parthchilwerwar)
+- Name - [GitHub Profile](https://github.com/parthchilwerwar)
 
 ---
 
