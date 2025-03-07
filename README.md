@@ -75,13 +75,9 @@ To learn more about the technologies used in this project:
 
 ## 🚀 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
+
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/parthchilwerwar/deepfake_website/issue).
 
 ## 📝 License
 
@@ -91,6 +87,5 @@ This project is [MIT](LICENSE) licensed.
 
 - Name - Parth chilwerwar
 
----
 
 <p align="center">Made By 🔍 TruthLens</p>
