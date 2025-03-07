@@ -54,8 +54,14 @@ const blogPosts: BlogPost[] = [
         
     ];
 
+interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-    export default function BlogPostPage({ params }: { params: { id: string } }) {
+export default function BlogPostPage({ params }: PageProps) {
         const [scrolled, setScrolled] = useState(false);
         const [post, setPost] = useState<BlogPost | null>(null);
       
