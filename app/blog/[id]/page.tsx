@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { use, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -55,30 +55,24 @@ const blogPosts: BlogPost[] = [
     ];
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  }>;
 }
 
 export default function BlogPostPage({ params }: PageProps) {
+        const { id } = use(params);
         const [scrolled, setScrolled] = useState(false);
-        const [post, setPost] = useState<BlogPost | null>(null);
+        const post = blogPosts.find(p => p.id === parseInt(id, 10));
       
         useEffect(() => {
           const handleScroll = () => {
             setScrolled(window.scrollY > 50);
           };
       
-          const foundPost = blogPosts.find(p => p.id === parseInt(params.id));
-      
-          if (foundPost) {
-            setPost(foundPost);
-          }
-      
           window.addEventListener('scroll', handleScroll);
           return () => window.removeEventListener('scroll', handleScroll);
-        }, [params.id]);
+        }, []);
       
         if (!post) {
           return (
