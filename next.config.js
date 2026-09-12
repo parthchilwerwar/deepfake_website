@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-      ignoreDuringBuilds:true ,
-  },
   images: {
     domains: ['localhost', '444fb1aa6f0ed55bed.gradio.live'],
     remotePatterns: [

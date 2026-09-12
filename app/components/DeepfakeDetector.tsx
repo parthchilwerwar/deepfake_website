@@ -3,7 +3,6 @@
 import { useState, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link'
-import { MdKeyboardBackspace } from "react-icons/md";
 
 export default function DeepfakeDetector() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
